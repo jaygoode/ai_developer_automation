@@ -17,3 +17,9 @@ def create_json_file(text):
         print("JSON successfully extracted and saved to 'task_plan.json'")
     else:
         print("No JSON found in the text.")
+
+
+def read_json_file(filepath):
+    with open(filepath, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return data
