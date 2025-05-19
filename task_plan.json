@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "phase": "Setup",
+    "title": "Create project directory",
+    "description": "Create a new folder named 'image_app' and initialize a Git repository inside it."
+  },
+  {
+    "id": 2,
+    "phase": "Setup",
+    "title": "Initialize virtual environment with Python >=3.8",
+    "description": "Use pip to create and activate a virtual environment with Python version 3.8 or higher."
+  },
+  {
+    "id": 3,
+    "phase": "Backend",
+    "title": "Install dependencies for backend",
+    "description": "Install Flask, requests, python-multipart, and its required dependencies using pip commands."
+  },
+  {
+    "id": 4,
+    "phase": "Backend",
+    "title": "Set up virtual environment with Python 3.8+ and pip >=21.0",
+    "description": "Create a new virtual environment in each project directory, activate it, then install Python 3.8+ and pip version >=21.0."
+  },
+  {
+    "id": 5,
+    "phase": "Frontend",
+    "title": "Set up Jupyter Notebooks environment",
+    "description": "Create a new virtual environment with Python 3.9+ and pip >=22.0, then install Jupyter notebooks and required dependencies."
+  },
+  {
+    "id": 6,
+    "phase": "Frontend",
+    "title": "Install data visualization libraries for frontend",
+    "description": "Install Matplotlib, Seaborn, Pandas, and NumPy in the virtual environment to use them in Jupyter notebooks."
+  },
+  {
+    "id": 7,
+    "phase": "Integration",
+    "title": "Set up Swagger UI for API documentation",
+    "description": "Install Swagger CLI and configure it with OpenAPI specification for the Flask application's API."
+  },
+  {
+    "id": 8,
+    "phase": "Testing",
+    "title": "Write unit tests using unittest framework",
+    "description": "Create test modules in a new directory to test functions, classes, and methods in the project codebase."
+  },
+  {
+    "id": 9,
+    "phase": "Testing",
+    "title": "Add integration tests for backend frontend interactions",
+    "description": "Write test cases to verify that the frontend interacts correctly with the backend API functionalities."
+  },
+  {
+    "id": 10,
+    "phase": "Deployment",
+    "title": "Install Jira CLI for CI/CD automation",
+    "description": "Download and install Jira CLI, then configure it to automate deployment of this project's codebase to remote repositories."
+  },
+  {
+    "id": 11,
+    "phase": "Deployment",
+    "title": "Set up GitHub Actions workflow",
+    "description": "Create a GitHub Actions workflow that automates integration testing and deployment based on trigger events."
+  },
+  {
+    "id": 12,
+    "phase": "Testing",
+    "title": "Write end-to-end tests for application functionality",
+    "description": "Develop comprehensive test cases to ensure the entire application flows as expected under various scenarios."
+  },
+  {
+    "id": 13,
+    "phase": "Testing",
+    "title": "Generate and run API quality reports from Swagger UI",
+    "description": "Use Swagger CLI to generate detailed API quality reports that highlight any issues in the Flask application's API endpoints."
+  },
+  {
+    "id": 14,
+    "phase": "Setup",
+    "title": "Set up Docker container for testing and deployment",
+    "description": "Install Docker, create a custom image with all project dependencies, then test it using Docker Compose or direct command line execution."
+  }
+]

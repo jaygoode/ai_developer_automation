@@ -1,21 +1,4 @@
 import subprocess
-import json
-
-def ollama_prompt(prompt, model="llama2"):
-    # Run the ollama CLI command with prompt input
-    process = subprocess.run(
-        ["ollama", "run", model, prompt],
-        capture_output=True,
-        text=True,
-        encoding="utf-8"
-
-    )
-    breakpoint()
-    if process.returncode != 0:
-        raise Exception(f"Ollama CLI error: {process.stderr}")
-    return process.stdout.strip()
-
-import subprocess
 
 def generate_task_plan(description, model="llama2"):
     system_prompt = build_structured_prompt(description)
@@ -56,7 +39,7 @@ Your task is to take the following project description and break it down into a 
 🔧 Requirements:
 
 - All steps must be relevant to building the project using Python.
-- Output must follow the exact JSON format shown below.
+- Output must follow the exact JSON format shown below. your answer should only contain the json structure so it can be sent directly to a json file.
 - Every step must contain:
   - "id" (integer step number)
   - "phase" (e.g., "Setup", "Backend", "Frontend", "Integration", "Testing", "Deployment")
@@ -82,4 +65,7 @@ Your task is to take the following project description and break it down into a 
     "description": "Use Python's built-in venv module to create and activate a virtual environment."
   }}
 ]
+
+IMPORTANT! 
+do not add anything else to your response except the json. your response will be directly sent to a JSON file.
 """
