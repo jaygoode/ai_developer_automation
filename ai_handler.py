@@ -18,26 +18,8 @@ def ollama_prompt(prompt, model="llama2"):
 import subprocess
 
 def generate_task_plan(description, model="llama2"):
-    system_prompt = f"""
-You are a highly skilled software architect and project planner.
-
-Your task is to take a short project description and deconstruct it into extremely detailed, step-by-step tasks required to fully build the project, suitable for a developer or automation system to follow without ambiguity.
-
-Instructions:
-- The project must be built using the Python programming language
-- Interpret the project description with precision.
-- Break down the implementation into very small, atomic tasks.
-- Include all necessary setup, tools, and environments (e.g., language setup, framework installation, repo creation, etc.).
-- Ensure the steps follow a logical and efficient sequence.
-- Clearly label major phases (e.g., Setup, Development, Integration, Testing, Deployment).
-- Number every task or step.
-- Avoid high-level generalizations—be as specific and actionable as possible.
-- Output in clean, readable Markdown.
-
-Project Description:
-{description}
-"""
-
+    system_prompt = build_structured_prompt(description)
+    
     print("[*] Sending request to Ollama...")
 
     result = subprocess.run(
@@ -63,3 +45,41 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n[!] Error: {e}")
 
+def build_structured_prompt(description):
+    return f"""
+You are an expert Python software architect.
+
+Your task is to take the following project description and break it down into a list of atomic, actionable development steps, each suitable to be used as an individual prompt for a code-generation AI.
+
+---
+
+🔧 Requirements:
+
+- All steps must be relevant to building the project using Python.
+- Output must follow the exact JSON format shown below.
+- Every step must contain:
+  - "id" (integer step number)
+  - "phase" (e.g., "Setup", "Backend", "Frontend", "Integration", "Testing", "Deployment")
+  - "title" (short task name)
+  - "description" (detailed instruction suitable to generate Python code)
+
+---
+
+📦 Example Output Format:
+
+```json
+[
+  {{
+    "id": 1,
+    "phase": "Setup",
+    "title": "Create project directory",
+    "description": "Create a new folder named 'image_app' and initialize a Git repository inside it."
+  }},
+  {{
+    "id": 2,
+    "phase": "Setup",
+    "title": "Initialize virtual environment",
+    "description": "Use Python's built-in venv module to create and activate a virtual environment."
+  }}
+]
+"""
