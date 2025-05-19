@@ -1,0 +1,18 @@
+ai needs to be able to run scripts - safely without doing something crazy?? maybe run in a container
+ai should take a big general idea of a project, then split it up to minor parts, then loop the list, doing one thing and analyxing output and pushing changes, + fixing code.
+
+needs a cron job to start at certain points, random times in day.
+
+read write to files.
+
+1. take project prompt
+2. split to small tasks
+3. loop begins
+    4. start docker container
+    5. read existing code, recursive file reading?
+    6. build new code/fix failed code
+    7. push to github
+    8. log everything with comment descriptions. 
+    9. memory of what is working, what is broken, what is next.
+    10. if change working, create new func, else fix old func
+        11. if broken for x iterations, add to manual fix list.
