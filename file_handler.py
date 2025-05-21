@@ -2,7 +2,7 @@ import json
 import re
 import yaml
 
-def create_json_file(text):
+def create_json_file(text:str):
     pattern = re.compile(r'\[.*?\]', re.DOTALL)
     match = pattern.search(text)
     if match:
@@ -20,12 +20,16 @@ def create_json_file(text):
         print("No JSON found in the text.")
 
 
-def read_json_file(filepath):
+def read_json_file(filepath:str) -> dict:
     with open(filepath, 'r', encoding='utf-8') as f:
         data = json.load(f)
     return data
 
-def read_yaml_file(filepath):
+def read_yaml_file(filepath:str) -> dict:
     with open(filepath, 'r', encoding='utf-8') as f:
         data = yaml.safe_load(f)
     return data
+
+def write_to_yaml_file(data:dict, filepath:str) -> None:
+    with open(filepath, 'w', encoding='utf-8') as f:
+        data = yaml.dump(f)

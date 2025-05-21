@@ -17,6 +17,12 @@ if __name__ == "__main__":
     task_plan = file_handler.read_json_file(config["task_plan_json_fp"])
     for task in task_plan:
         #add to memory started id
+        
+        #check what type of task it is - creation of file structure or code, or nothing actionable like planning
+        
+        #if file creation task, create a prompt requesting a terminal command for file structure build
+            #run in safe environment or do not allow terminal access.
+        
         pass
 
     breakpoint()
