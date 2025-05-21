@@ -1,5 +1,6 @@
 import json
 import re
+import yaml
 
 def create_json_file(text):
     pattern = re.compile(r'\[.*?\]', re.DOTALL)
@@ -22,4 +23,9 @@ def create_json_file(text):
 def read_json_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         data = json.load(f)
+    return data
+
+def read_yaml_file(filepath):
+    with open(filepath, 'r', encoding='utf-8') as f:
+        data = yaml.safe_load(f)
     return data
