@@ -2,61 +2,55 @@
   {
     "id": 1,
     "phase": "Setup",
-    "title": "Create setup.py file",
-    "description": "Create a Python setup file to manage project dependencies."
+    "title": "Create project directory structure",
+    "description": "Create a new folder named 'image_app' with subfolders for main code and documentation."
   },
   {
     "id": 2,
     "phase": "Setup",
-    "title": "Initialize virtual environment",
-    "description": "Use venv module to create and activate a virtual environment for the project."
+    "title": "Initialize dependencies management",
+    "description": "Set up pipenv to manage project dependencies within isolated environments."
   },
   {
     "id": 3,
-    "phase": "Installation",
-    "title": "Install dependencies",
-    "description": "Install required Python packages such as PyTorch, OpenCV, etc."
+    "phase": "Setup",
+    "title": "Generate example content",
+    "description": "Create a basic README.md file with initial features and version information."
   },
   {
     "id": 4,
-    "phase": "Data Handling",
-    "title": "Set up data preprocessing",
-    "description": "Implement data preprocessing and augmentation using PyTorch datasets."
+    "phase": "Testing",
+    "title": "Set up testing framework",
+    "description": "Install pytest and create conftest.py for platform-specific test setup."
   },
   {
     "id": 5,
-    "phase": "Frontend",
-    "title": "Create main.py file",
-    "description": "Develop the frontend of a Convolutional Neural Network (CNN) model for image processing."
+    "phase": "Setup",
+    "title": "Create package metadata",
+    "description": "Build an __init__.py file with project details like author, description, license, and version."
   },
   {
     "id": 6,
-    "phase": "Backend",
-    "title": "Integrate backend components",
-    "description": "Implement the CNN model and dataset handling in the backend."
+    "phase": "Testing",
+    "title": "List external dependencies",
+    "description": "Create a requirements.txt file listing all necessary external packages."
   },
   {
     "id": 7,
-    "phase": "Testing",
-    "title": "Write unit tests",
-    "description": "Create comprehensive unit tests for each module of the project."
+    "phase": "Setup",
+    "title": "Initialize specific packages",
+    "description": "Set up docstringinator for generating code examples with proper documentation."
   },
   {
     "id": 8,
-    "phase": "Testing",
-    "title": "Run integration tests",
-    "description": "Perform end-to-end testing to ensure frontend and backend integration works as expected."
+    "phase": "Integration",
+    "title": "Set up continuous integration pipeline",
+    "description": "Create GitHub Actions workflow to automate testing, building, and deployment."
   },
   {
     "id": 9,
     "phase": "Deployment",
-    "title": "Set up Docker",
-    "description": "Create a Docker image of the project for easy deployment."
-  },
-  {
-    "id": 10,
-    "phase": "Deployment",
-    "title": "Deploy application",
-    "description": "Run the application on a web server using Docker."
+    "title": "Prepare for deployment",
+    "description": "Build Docker container images with pre-built serving files for the application."
   }
 ]

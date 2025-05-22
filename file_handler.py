@@ -1,6 +1,7 @@
 import json
 import re
 import yaml
+import os
 
 def create_json_file(text:str):
     pattern = re.compile(r'\[.*?\]', re.DOTALL)
@@ -31,5 +32,13 @@ def read_yaml_file(filepath:str) -> dict:
     return data
 
 def write_to_yaml_file(data:dict, filepath:str) -> None:
-    with open(filepath, 'w', encoding='utf-8') as f:
-        data = yaml.dump(f)
+    if os.path.exists(filepath):
+        with open(filepath, "r") as f:
+            existing_data = yaml.safe_load(f) or {}
+    else:
+        existing_data = {}
+
+    existing_data.update(data)
+
+    with open(filepath, "w") as f:
+        yaml.dump(existing_data, f)

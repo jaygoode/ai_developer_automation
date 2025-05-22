@@ -4,7 +4,6 @@ import file_handler
 config = file_handler.read_yaml_file("config.yaml")
 
 def generate_task_plan(description, model="llama2"):
-    breakpoint()
     system_prompt = build_structured_prompt(description)
     
     print("[*] Sending request to Ollama...")
