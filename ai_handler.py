@@ -19,9 +19,7 @@ class TaskType(Enum):
 
 config = file_handler.read_yaml_file("config.yaml")
 
-def generate_task_plan(description, model="llama2"):
-    system_prompt =file_handler.read_yaml_file(config["prompts_fp"])["task_plan_prompt"] 
-    
+def prompt_ai(system_prompt, model="llama2"):
     print("[*] Sending request to Ollama...")
 
     result = subprocess.run(
@@ -36,7 +34,13 @@ def generate_task_plan(description, model="llama2"):
 
     return result.stdout.strip()
 
+def generate_task_plan( model="llama2"):
+    #TODO check task type probably is same as this function so we can refactor to just use one generic func with different prompts.
+    system_prompt =file_handler.read_yaml_file(config["prompts_fp"])["task_plan_prompt"] 
+    return prompt_ai(system_prompt, model)
+
 
 def check_task_type(data):
     '''give prompt to ai to determine what kind of task it is, is it architecture based or code based or plan based etc'''
+
 
