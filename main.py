@@ -24,19 +24,18 @@ if __name__ == "__main__":
     # file_handler.create_json_file(breakdown)
 
     for task in task_plan:
-        #add to memory started id
-        breakpoint()
+        #make sure we have a memory and status for task
         if not task.get("status"):
             task["status"] = Status.STARTED.value
+
         task_memory = {task["id"]:{"status": task["status"]}}
         if not memory or task["id"] not in memory:
             file_handler.write_to_yaml_file(task_memory, config["memory_fp"])
-
-
-        #check what type of task it is - creation of file structure or code, or nothing actionable like planning
         
+        breakpoint()
+        #check what type of task it is - creation of file structure or code, or nothing actionable like planning
+        #we need a context text from ai to summarize the task, and maybe send all descriptions from all tasks ai can understand what file structure needed
+        ai_handler.check_task_type()
         #if file creation task, create a prompt requesting a terminal command for file structure build
             #run in safe environment or do not allow terminal access.
         
-
-    breakpoint()
