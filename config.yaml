@@ -1,2 +1,3 @@
 task_plan_json_fp: "./task_plan.json"
 prompts_fp: "./prompts.yaml"
+memory_fp: "./memory.yaml"
