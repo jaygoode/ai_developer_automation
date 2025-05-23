@@ -13,15 +13,18 @@ if __name__ == "__main__":
     config = file_handler.read_yaml_file("config.yaml")
     memory = file_handler.read_yaml_file(config["memory_fp"])
     task_plan = file_handler.read_json_file(config["task_plan_json_fp"])
-    # project_input = input("> ")
-    # try:
-    #     breakdown = ai_handler.generate_task_plan(project_input, model="deepseek-r1")
-    #     print("\n--- Generated Task Plan ---\n")
-    #     print(breakdown)
-    # except Exception as e:
-    #     print(f"\n[!] Error: {e}")
+    model="deepseek-r1"
+    #take full task_plan and enums, and let ai set task type for 
+    task["task_type"] = ai_handler.prompt_ai(project_input, model=model) #should type actually be set in first prompt? prob not.
+    project_input = input("> ")
+    try:
+        breakdown = ai_handler.prompt_ai(project_input, model=model)
+        print("\n--- Generated Task Plan ---\n")
+        print(breakdown)
+    except Exception as e:
+        print(f"\n[!] Error: {e}")
         
-    # file_handler.create_json_file(breakdown)
+    file_handler.create_json_file(breakdown)
 
     for task in task_plan:
         #make sure we have a memory and status for task
@@ -35,7 +38,9 @@ if __name__ == "__main__":
         breakpoint()
         #check what type of task it is - creation of file structure or code, or nothing actionable like planning
         #we need a context text from ai to summarize the task, and maybe send all descriptions from all tasks ai can understand what file structure needed
-        ai_handler.check_task_type()
+        if not task.get("task_type"):
+            continue
+
         #if file creation task, create a prompt requesting a terminal command for file structure build
             #run in safe environment or do not allow terminal access.
         
